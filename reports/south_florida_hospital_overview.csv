@@ -1,0 +1,39 @@
+facility_id,facility_name,countyparish,citytown,zip_code,hospital_type,hospital_ownership,emergency_services,hospital_overall_rating,count_of_mort_measures_better,count_of_mort_measures_worse,count_of_safety_measures_better,count_of_safety_measures_worse,count_of_readm_measures_better,count_of_readm_measures_worse
+100289,CLEVELAND CLINIC HOSPITAL,BROWARD,WESTON,33331,Acute Care Hospitals,Voluntary non-profit - Private,Yes,5.0,4.0,0.0,3.0,1.0,1.0,2.0
+100285,MEMORIAL HOSPITAL MIRAMAR,BROWARD,MIRAMAR,33029,Acute Care Hospitals,Government - Hospital District or Authority,Yes,5.0,0.0,0.0,1.0,0.0,0.0,1.0
+100276,BROWARD HEALTH CORAL SPRINGS,BROWARD,CORAL SPRINGS,33065,Acute Care Hospitals,Government - Hospital District or Authority,Yes,4.0,1.0,0.0,2.0,0.0,0.0,1.0
+100073,HOLY CROSS HOSPITAL,BROWARD,FT LAUDERDALE,33308,Acute Care Hospitals,Voluntary non-profit - Church,Yes,4.0,0.0,0.0,1.0,0.0,2.0,1.0
+100230,MEMORIAL HOSPITAL PEMBROKE,BROWARD,PEMBROKE PINES,33024,Acute Care Hospitals,Government - Hospital District or Authority,Yes,4.0,0.0,0.0,1.0,0.0,0.0,1.0
+100200,BROWARD HEALTH IMPERIAL POINT,BROWARD,FORT LAUDERDALE,33308,Acute Care Hospitals,Government - Hospital District or Authority,No,3.0,0.0,0.0,1.0,0.0,0.0,1.0
+100039,BROWARD HEALTH MEDICAL CENTER,BROWARD,FORT LAUDERDALE,33316,Acute Care Hospitals,Government - Hospital District or Authority,Yes,3.0,0.0,0.0,3.0,0.0,0.0,2.0
+100086,BROWARD HEALTH NORTH,BROWARD,DEERFIELD BEACH,33064,Acute Care Hospitals,Government - Hospital District or Authority,Yes,3.0,0.0,0.0,2.0,0.0,0.0,2.0
+100360,HCA FLORIDA UNIVERSITY HOSPITAL,BROWARD,DAVIE,33328,Acute Care Hospitals,Proprietary,Yes,3.0,0.0,0.0,1.0,0.0,0.0,0.0
+100281,MEMORIAL HOSPITAL WEST,BROWARD,PEMBROKE PINES,33028,Acute Care Hospitals,Government - Hospital District or Authority,Yes,3.0,1.0,0.0,2.0,0.0,0.0,3.0
+100038,MEMORIAL REGIONAL HOSPITAL,BROWARD,HOLLYWOOD,33021,Acute Care Hospitals,Government - Hospital District or Authority,Yes,3.0,0.0,0.0,3.0,0.0,0.0,4.0
+100167,HCA FLORIDA MERCY HOSPITAL,BROWARD,PLANTATION,33317,Acute Care Hospitals,Voluntary non-profit - Private,Yes,2.0,2.0,0.0,2.0,0.0,0.0,2.0
+100189,HCA FLORIDA NORTHWEST HOSPITAL,BROWARD,MARGATE,33063,Acute Care Hospitals,Proprietary,Yes,2.0,0.0,0.0,2.0,0.0,0.0,3.0
+100224,UNIVERSITY HOSPITAL AND MEDICAL CENTER,BROWARD,TAMARAC,33321,Acute Care Hospitals,Proprietary,Yes,2.0,0.0,0.0,1.0,0.0,0.0,3.0
+100228,WESTSIDE REGIONAL MEDICAL CENTER,BROWARD,PLANTATION,33324,Acute Care Hospitals,Proprietary,No,2.0,0.0,1.0,4.0,0.0,0.0,2.0
+104026,FORT LAUDERDALE BEHAVIORAL HEALTH CENTER,BROWARD,OAKLAND PARK,33334,Psychiatric,Proprietary,No,,,,,,,
+104079,LARKIN COMMUNITY HOSPITAL BEHAVIORAL HEALTH SRVS,BROWARD,HOLLYWOOD,33021,Psychiatric,Proprietary,No,,,,,,,
+104001,SOUTH FLORIDA STATE HOSPITAL,BROWARD,PEMBROKE PINES,33025,Psychiatric,Government - Local,Yes,,,,,,,
+100008,BAPTIST HOSPITAL OF MIAMI,MIAMI-DADE,MIAMI,33176,Acute Care Hospitals,Voluntary non-profit - Private,Yes,5.0,3.0,0.0,3.0,0.0,0.0,3.0
+100296,DOCTORS HOSPITAL,MIAMI-DADE,CORAL GABLES,33146,Acute Care Hospitals,Voluntary non-profit - Other,Yes,5.0,1.0,0.0,1.0,0.0,1.0,1.0
+100314,WEST KENDALL BAPTIST HOSPITAL,MIAMI-DADE,MIAMI,33196,Acute Care Hospitals,Voluntary non-profit - Private,Yes,5.0,2.0,0.0,2.0,0.0,1.0,1.0
+100209,HCA FLORIDA KENDALL HOSPITAL,MIAMI-DADE,MIAMI,33175,Acute Care Hospitals,Proprietary,Yes,4.0,1.0,0.0,3.0,0.0,1.0,2.0
+100125,HOMESTEAD HOSPITAL,MIAMI-DADE,HOMESTEAD,33033,Acute Care Hospitals,Voluntary non-profit - Private,Yes,4.0,0.0,0.0,1.0,0.0,0.0,0.0
+100050,LARKIN COMMUNITY HOSPITAL PALM SPRINGS CAMPUS,MIAMI-DADE,HIALEAH,33012,Acute Care Hospitals,Voluntary non-profit - Private,Yes,4.0,0.0,0.0,0.0,0.0,1.0,0.0
+10064F,MIAMI VA MEDICAL CENTER,MIAMI-DADE,MIAMI,33125,Acute Care - Veterans Administration,Veterans Health Administration,Yes,4.0,0.0,0.0,0.0,1.0,0.0,2.0
+100154,SOUTH MIAMI HOSPITAL,MIAMI-DADE,MIAMI,33143,Acute Care Hospitals,Voluntary non-profit - Private,Yes,4.0,1.0,0.0,3.0,0.0,1.0,2.0
+100183,CORAL GABLES HOSPITAL,MIAMI-DADE,CORAL GABLES,33134,Acute Care Hospitals,Proprietary,Yes,3.0,0.0,0.0,0.0,0.0,1.0,1.0
+100131,HCA FLORIDA AVENTURA HOSPITAL,MIAMI-DADE,AVENTURA,33180,Acute Care Hospitals,Voluntary non-profit - Private,Yes,3.0,2.0,0.0,2.0,0.0,0.0,2.0
+100053,HIALEAH HOSPITAL,MIAMI-DADE,HIALEAH,33013,Acute Care Hospitals,Proprietary,Yes,3.0,1.0,0.0,1.0,0.0,0.0,1.0
+100034,"MOUNT SINAI MEDICAL CENTER OF FLORIDA, INC",MIAMI-DADE,MIAMI BEACH,33140,Acute Care Hospitals,Voluntary non-profit - Private,Yes,3.0,1.0,0.0,2.0,1.0,0.0,2.0
+100284,KERALTY HOSPITAL,MIAMI-DADE,MIAMI,33155,Acute Care Hospitals,Proprietary,Yes,2.0,0.0,0.0,1.0,0.0,0.0,1.0
+100187,PALMETTO GENERAL HOSPITAL,MIAMI-DADE,HIALEAH,33016,Acute Care Hospitals,Proprietary,Yes,2.0,0.0,0.0,3.0,0.0,2.0,1.0
+100022,JACKSON HEALTH SYSTEM,MIAMI-DADE,MIAMI,33136,Acute Care Hospitals,Government - Hospital District or Authority,Yes,1.0,0.0,4.0,3.0,1.0,0.0,4.0
+100181,LARKIN COMMUNITY HOSPITAL,MIAMI-DADE,SOUTH MIAMI,33143,Acute Care Hospitals,Proprietary,Yes,1.0,0.0,0.0,0.0,0.0,0.0,3.0
+100029,NORTH SHORE MEDICAL CENTER,MIAMI-DADE,MIAMI,33150,Acute Care Hospitals,Proprietary,Yes,1.0,0.0,0.0,2.0,1.0,0.0,3.0
+100277,DOUGLAS GARDENS HOSPITAL,MIAMI-DADE,MIAMI,33137,Acute Care Hospitals,Voluntary non-profit - Private,No,,,,,,,
+103301,NICKLAUS CHILDREN'S HOSPITAL,MIAMI-DADE,MIAMI,33155,Childrens,Voluntary non-profit - Private,Yes,,,,,,,
+104049,SOUTHERN WINDS HOSPITAL,MIAMI-DADE,HIALEAH,33012,Psychiatric,Proprietary,No,,,,,,,

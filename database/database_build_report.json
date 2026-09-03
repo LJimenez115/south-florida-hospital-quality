@@ -1,0 +1,11 @@
+{
+  "database_file": "south_florida_hospital_quality.db",
+  "table_row_counts": {
+    "dim_hospital": 221,
+    "dim_hcahps_measure": 9,
+    "dim_survey_period": 1,
+    "fact_hospital_quality": 221,
+    "fact_hcahps_rating": 1719
+  },
+  "foreign_key_check": "passed"
+}

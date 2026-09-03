@@ -1,0 +1,6 @@
+# Why: pandas cleans and joins the CMS tabular extracts without manual row-by-row processing.
+pandas>=2.2,<3.0
+# Why: matplotlib writes portable chart images for review and later Power BI design decisions.
+matplotlib>=3.8,<4.0
+# Why: seaborn keeps statistical chart styling consistent and readable.
+seaborn>=0.13,<1.0

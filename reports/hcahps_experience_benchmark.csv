@@ -1,0 +1,19 @@
+benchmark_group,hcahps_measure_id,hcahps_question,hospitals_with_rating,average_star_rating,median_star_rating,average_completed_surveys
+Rest of Florida,H_CLEAN_STAR_RATING,Cleanliness - star rating,157,3.3,3.0,1288.0
+Rest of Florida,H_COMP_1_STAR_RATING,Nurse communication - star rating,157,2.82,3.0,1288.0
+Rest of Florida,H_COMP_2_STAR_RATING,Doctor communication - star rating,157,2.37,2.0,1288.0
+Rest of Florida,H_COMP_5_STAR_RATING,Communication about medicines - star rating,157,2.14,2.0,1288.0
+Rest of Florida,H_COMP_6_STAR_RATING,Discharge information - star rating,157,2.67,3.0,1288.0
+Rest of Florida,H_HSP_RATING_STAR_RATING,Overall hospital rating - star rating,157,2.88,3.0,1288.0
+Rest of Florida,H_QUIET_STAR_RATING,Quietness - star rating,157,2.93,3.0,1288.0
+Rest of Florida,H_RECMND_STAR_RATING,Recommend hospital - star rating,157,3.27,3.0,1288.0
+Rest of Florida,H_STAR_RATING,Summary star rating,157,2.72,3.0,1288.0
+South Florida,H_CLEAN_STAR_RATING,Cleanliness - star rating,34,3.53,4.0,1080.0
+South Florida,H_COMP_1_STAR_RATING,Nurse communication - star rating,34,2.43,2.0,1080.0
+South Florida,H_COMP_2_STAR_RATING,Doctor communication - star rating,34,2.6,2.0,1080.0
+South Florida,H_COMP_5_STAR_RATING,Communication about medicines - star rating,34,2.07,2.0,1080.0
+South Florida,H_COMP_6_STAR_RATING,Discharge information - star rating,34,2.07,2.0,1080.0
+South Florida,H_HSP_RATING_STAR_RATING,Overall hospital rating - star rating,34,2.67,3.0,1080.0
+South Florida,H_QUIET_STAR_RATING,Quietness - star rating,34,3.03,3.0,1080.0
+South Florida,H_RECMND_STAR_RATING,Recommend hospital - star rating,34,3.13,3.0,1080.0
+South Florida,H_STAR_RATING,Summary star rating,34,2.57,2.5,1080.0

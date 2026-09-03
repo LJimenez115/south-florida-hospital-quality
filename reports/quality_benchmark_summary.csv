@@ -1,0 +1,3 @@
+benchmark_group,hospital_count,hospitals_with_rating,average_overall_rating,median_overall_rating,emergency_service_hospitals,rated_hospital_percent
+Rest of Florida,183,136,3.03,3.0,152,74.3
+South Florida,38,32,3.19,3.0,32,84.2
