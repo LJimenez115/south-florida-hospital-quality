@@ -1,6 +1,12 @@
--- Why: SQLite creates a portable, server-free portfolio database that can be
--- inspected locally and connected to Power BI through a SQLite connector.
-PRAGMA foreign_keys = ON;
+-- Why: PostgreSQL is the portfolio database platform because it is production-ready
+-- and Power BI provides a native connector for importing its relational tables.
+DROP TABLE IF EXISTS fact_hcahps_rating CASCADE;
+DROP TABLE IF EXISTS fact_hospital_quality CASCADE;
+DROP TABLE IF EXISTS dim_survey_period CASCADE;
+DROP TABLE IF EXISTS dim_hcahps_measure CASCADE;
+DROP TABLE IF EXISTS dim_hospital CASCADE;
+-- Why: These drops make a rebuild deterministic inside the dedicated project database;
+-- the loader refuses to run if DATABASE_URL names a different database.
 
 -- Why: Hospital attributes are stored once because one facility can have one CMS
 -- quality snapshot and many HCAHPS measure ratings.
@@ -33,8 +39,8 @@ CREATE TABLE IF NOT EXISTS dim_hcahps_measure (
 -- compare HCAHPS scores from different reporting windows as if they were identical.
 CREATE TABLE IF NOT EXISTS dim_survey_period (
     survey_period_key INTEGER PRIMARY KEY,
-    survey_start_date TEXT NOT NULL,
-    survey_end_date TEXT NOT NULL,
+    survey_start_date DATE NOT NULL,
+    survey_end_date DATE NOT NULL,
     UNIQUE (survey_start_date, survey_end_date)
 );
 -- Why: This dimension preserves the period reported by CMS for each survey rating.
@@ -44,7 +50,7 @@ CREATE TABLE IF NOT EXISTS dim_survey_period (
 CREATE TABLE IF NOT EXISTS fact_hospital_quality (
     hospital_quality_key INTEGER PRIMARY KEY,
     hospital_key INTEGER NOT NULL UNIQUE,
-    overall_hospital_rating REAL,
+    overall_hospital_rating NUMERIC,
     mortality_measures_reported INTEGER,
     mortality_measures_better INTEGER,
     mortality_measures_worse INTEGER,
@@ -67,9 +73,9 @@ CREATE TABLE IF NOT EXISTS fact_hcahps_rating (
     hospital_key INTEGER NOT NULL,
     hcahps_measure_key INTEGER NOT NULL,
     survey_period_key INTEGER NOT NULL,
-    patient_survey_star_rating REAL,
+    patient_survey_star_rating NUMERIC,
     completed_survey_count INTEGER,
-    survey_response_rate_percent REAL,
+    survey_response_rate_percent NUMERIC,
     UNIQUE (hospital_key, hcahps_measure_key, survey_period_key),
     FOREIGN KEY (hospital_key) REFERENCES dim_hospital(hospital_key),
     FOREIGN KEY (hcahps_measure_key) REFERENCES dim_hcahps_measure(hcahps_measure_key),
