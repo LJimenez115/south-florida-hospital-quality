@@ -1,12 +1,15 @@
-"""Build the normalized SQLite database for CMS hospital quality analysis."""
+"""Build the normalized PostgreSQL database for CMS hospital quality analysis."""
 
 from __future__ import annotations
 
 import json
-import sqlite3
+import os
 from pathlib import Path
 
 import pandas as pd
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, text
+from sqlalchemy.engine import Connection, make_url
 
 
 # Why: These paths are derived from the project location so the build works from
@@ -17,8 +20,24 @@ HOSPITAL_FILE = PROCESSED_DIR / "florida_hospital_quality_clean.csv"
 HCAHPS_FILE = PROCESSED_DIR / "florida_hcahps_star_ratings_clean.csv"
 SCHEMA_FILE = PROJECT_ROOT / "sql" / "01_create_schema.sql"
 DATABASE_DIR = PROJECT_ROOT / "database"
-DATABASE_FILE = DATABASE_DIR / "south_florida_hospital_quality.db"
 BUILD_REPORT = DATABASE_DIR / "database_build_report.json"
+DATABASE_NAME = "south_florida_hospital_quality"
+
+
+def get_database_url() -> str:
+    """Read and validate the local PostgreSQL connection string."""
+    # Why: Loading `.env` makes the local connection easy to configure without
+    # putting a database password in the repository or a Power BI screenshot.
+    load_dotenv(PROJECT_ROOT / ".env")
+    database_url = os.getenv("DATABASE_URL")
+    if not database_url:
+        raise ValueError("DATABASE_URL is missing. Copy .env.example to .env and add your password.")
+    parsed_url = make_url(database_url)
+    # Why: The schema clears only project tables on a rebuild, so this check avoids
+    # accidentally using a connection string for a different PostgreSQL database.
+    if parsed_url.database != DATABASE_NAME:
+        raise ValueError(f"DATABASE_URL must use the dedicated `{DATABASE_NAME}` database.")
+    return database_url
 
 
 def make_dimension(
@@ -26,7 +45,7 @@ def make_dimension(
     columns: list[str],
     key_column: str,
     table_name: str,
-    connection: sqlite3.Connection,
+    connection: Connection,
 ) -> pd.DataFrame:
     """Create a surrogate-key dimension and keep its source-column mapping."""
     # Why: Surrogate keys shrink the fact tables and make the model resilient if a
@@ -51,14 +70,13 @@ def main() -> None:
     if hospitals["facility_id"].duplicated().any():
         raise ValueError("Hospital source must have one row per facility ID.")
 
-    # Why: Removing the prior generated file makes every rebuild deterministic and
-    # prevents a second local run from duplicating fact rows.
-    if DATABASE_FILE.exists():
-        DATABASE_FILE.unlink()
-
-    with sqlite3.connect(DATABASE_FILE) as connection:
-        connection.execute("PRAGMA foreign_keys = ON")
-        connection.executescript(SCHEMA_FILE.read_text(encoding="utf-8"))
+    # Why: PostgreSQL is managed outside the repository, while the schema file
+    # recreates only the tables in this dedicated project database on every load.
+    engine = create_engine(get_database_url())
+    with engine.begin() as connection:
+        for statement in SCHEMA_FILE.read_text(encoding="utf-8").split(";"):
+            if statement.strip():
+                connection.exec_driver_sql(statement)
 
         hospital_columns = [
             "facility_id", "facility_name", "county_name", "city_name", "state_code", "zip_code",
@@ -142,22 +160,28 @@ def main() -> None:
             "dim_hospital", "dim_hcahps_measure", "dim_survey_period", "fact_hospital_quality",
             "fact_hcahps_rating",
         ]
-        counts = {name: connection.execute(f"SELECT COUNT(*) FROM {name}").fetchone()[0] for name in table_names}
-        foreign_key_errors = connection.execute("PRAGMA foreign_key_check").fetchall()
-        if foreign_key_errors:
-            raise ValueError(f"Foreign-key validation failed: {foreign_key_errors}")
+        counts = {
+            name: connection.execute(text(f"SELECT COUNT(*) FROM {name}")).scalar_one()
+            for name in table_names
+        }
+        # Why: PostgreSQL enforces every foreign key as rows are inserted, so a
+        # successful transaction confirms the declared relationships are valid.
+        foreign_key_check = "passed (PostgreSQL constraints enforced during insert)"
+
+    engine.dispose()
 
     # Why: The build report documents successful row counts for the README and
     # makes it easy to verify a later rebuild against this completed database.
     BUILD_REPORT.write_text(
-        json.dumps({"database_file": DATABASE_FILE.name, "table_row_counts": counts, "foreign_key_check": "passed"}, indent=2),
+        json.dumps({"database_platform": "PostgreSQL", "database_name": DATABASE_NAME,
+                    "table_row_counts": counts, "foreign_key_check": foreign_key_check}, indent=2),
         encoding="utf-8",
     )
-    print(f"Created database: {DATABASE_FILE}")
+    print(f"Loaded PostgreSQL database: {DATABASE_NAME}")
     print(f"Created build report: {BUILD_REPORT}")
 
 
 if __name__ == "__main__":
     # Why: The guard allows database helper code to be imported without triggering
-    # a rebuild that would replace the existing local database file.
+    # a rebuild that would replace the dedicated PostgreSQL project tables.
     main()
