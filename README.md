@@ -25,10 +25,10 @@ This project uses PostgreSQL rather than a local SQLite file. Install and start 
 
 ```bash
 # Why: Create one isolated database so this project's rebuild never changes another local database.
-psql -d postgres -f sql/00_create_database.sql
+psql -U your_postgres_user -d postgres -f sql/00_create_database.sql
 # Why: Copy the safe template locally; `.env` is ignored so the password cannot be committed.
 cp .env.example .env
-# Why: After adding your PostgreSQL password to `.env`, this command creates the schema and loads the cleaned CMS data.
+# Why: After adding your PostgreSQL user/password details to `.env`, this command creates the schema and loads the cleaned CMS data.
 .venv/bin/python scripts/build_database.py
 ```
 
