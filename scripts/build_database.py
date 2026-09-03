@@ -101,7 +101,13 @@ def main() -> None:
         period_dimension.insert(0, "survey_period_key", range(1, len(period_dimension) + 1))
         period_dimension_for_database = period_dimension.rename(columns={
             "start_date": "survey_start_date", "end_date": "survey_end_date",
-        })
+        }).copy()
+        # Why: CMS provides reporting-window dates as text; converting them before
+        # insertion lets PostgreSQL store true DATE values and reject invalid periods.
+        for column in ["survey_start_date", "survey_end_date"]:
+            period_dimension_for_database[column] = pd.to_datetime(
+                period_dimension_for_database[column], errors="raise"
+            ).dt.date
         period_dimension_for_database.to_sql("dim_survey_period", connection, if_exists="append", index=False)
 
         # Why: The hospital quality source is one row per facility, so it maps to a
