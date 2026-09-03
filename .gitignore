@@ -2,6 +2,8 @@
 data/raw/
 # Why: Full cleaned datasets are generated locally; a small safe sample can be added later if desired.
 data/processed/*.csv
+# Why: Local connection strings contain credentials and must never be committed.
+.env
 # Why: The SQLite database is generated from the public source and can be rebuilt with the included SQL and scripts.
 database/*.db
 # Why: Python environments and cache files are machine-specific local artifacts.
