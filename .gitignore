@@ -1,15 +1,10 @@
-# Why: Raw API extracts are reproducible and should not inflate the public portfolio repository.
+# Original downloads and exported results stay local.
 data/raw/
-# Why: Full cleaned datasets are generated locally; a small safe sample can be added later if desired.
-data/processed/*.csv
-# Why: Local connection strings contain credentials and must never be committed.
+data/processed/
+/reports/
+# Connection details and local editor files.
 .env
-# Why: The SQLite database is generated from the public source and can be rebuilt with the included SQL and scripts.
-database/*.db
-# Why: Python environments and cache files are machine-specific local artifacts.
-.venv/
-__pycache__/
-*.py[cod]
-# Why: Editor and operating-system metadata does not belong in the repository.
+.pgpass
 .DS_Store
 .vscode/
+.idea/
